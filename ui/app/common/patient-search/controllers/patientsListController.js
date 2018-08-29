@@ -140,7 +140,7 @@ angular.module('bahmni.common.patientSearch')
             } else {
                 $window.location = appService.getAppDescriptor().formatUrl($scope.search.searchType.forwardUrl, options, true);
             }
-        };
+        };        
         initialize();
     }
 ]);

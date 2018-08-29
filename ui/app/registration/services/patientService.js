@@ -66,12 +66,17 @@ angular.module('bahmni.registration')
             return $http.post(url, data, config);
         };
 
+        var billRegistrationFee = function (patient) {
+          return $http.post('http://localhost:8080/bahmni-service/registrationfee.form',patient,{withCredentials: false});
+        };
+
         return {
             search: search,
             searchByIdentifier: searchByIdentifier,
             create: create,
             update: update,
             get: get,
-            updateImage: updateImage
+            updateImage: updateImage,
+            billRegistrationFee:billRegistrationFee
         };
     }]);

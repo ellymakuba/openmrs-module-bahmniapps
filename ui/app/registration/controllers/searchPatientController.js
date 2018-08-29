@@ -388,4 +388,14 @@ angular.module('bahmni.registration')
             $scope.isExtraIdentifierConfigured = function () {
                 return !_.isEmpty($scope.extraIdentifierTypes);
             };
+
+            $scope.processRegistrationFee = function (patient) {
+              console.log("patient to process registration fee for +++++++++++++++++++++++++++++++"+JSON.stringify(patient));
+              patientService.billRegistrationFee(patient).then(function(response){
+                console.log("response for billing registration fee ++++++++"+JSON.stringify(response));
+              },
+            function(error){
+               console.log("error for billing registration +++++++++++++++++++++"+JSON.stringify(error));
+            });
+            };
         }]);
