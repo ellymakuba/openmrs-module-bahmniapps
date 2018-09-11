@@ -4,7 +4,7 @@ var Bahmni = Bahmni || {};
 Bahmni.Common = Bahmni.Common || {};
 
 (function () {
-    var hostUrl = localStorage.getItem('host') ? ("https://" + localStorage.getItem('host')) : "";
+    var hostUrl = "http://165.227.8.120";
     var offlineRootDir = localStorage.getItem('offlineRootDir') || "";
     var RESTWS = hostUrl + "/openmrs/ws/rest";
     var RESTWS_V1 = hostUrl + "/openmrs/ws/rest/v1";
@@ -12,7 +12,7 @@ Bahmni.Common = Bahmni.Common || {};
     var EMRAPI = RESTWS + "/emrapi";
     var BACTERIOLOGY = RESTWS_V1;
     var BASE_URL = hostUrl + "/bahmni_config/openmrs/apps/";
-    var CUSTOM_URL = hostUrl + "/implementation_config/openmrs/apps/";
+    var CUSTOM_URL = hostUrl + "/bahmni_config/openmrs/apps/";
     var CUSTOM_LOCALE_URL = hostUrl + "/bahmni_config/openmrs/i18n/";
     var syncButtonConfiguration = {
         delay: 1000,
@@ -281,4 +281,3 @@ Bahmni.Common = Bahmni.Common || {};
         localeLangs: "/bahmni_config/openmrs/apps/home/locale_languages.json"
     };
 })();
-
