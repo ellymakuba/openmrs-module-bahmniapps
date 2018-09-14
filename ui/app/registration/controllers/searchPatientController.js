@@ -388,14 +388,23 @@ angular.module('bahmni.registration')
             $scope.isExtraIdentifierConfigured = function () {
                 return !_.isEmpty($scope.extraIdentifierTypes);
             };
-
             $scope.processRegistrationFee = function (patient) {
+              var erpCredentials={
+                "usr":"openmrs@intelligentso.com",
+                "pwd":"openmrs"
+              };
+              patient.products=["registration fee"];
               console.log("patient to process registration fee for +++++++++++++++++++++++++++++++"+JSON.stringify(patient));
-              patientService.billRegistrationFee(patient).then(function(response){
-                console.log("response for billing registration fee ++++++++"+JSON.stringify(response));
+              patientService.loginERP(erpCredentials).then(function(res){
+                patientService.billRegistrationFee(patient).then(function(response){
+                  console.log("response for billing registration fee ++++++++"+JSON.stringify(response));
+                },
+              function(error){
+                 console.log("error for billing registration +++++++++++++++++++++"+JSON.stringify(error));
+              });
               },
-            function(error){
-               console.log("error for billing registration +++++++++++++++++++++"+JSON.stringify(error));
-            });
+              function(error){
+                console.log("error calling erp login++++++++++++++++++"+JSON.stringify(error));
+              });
             };
         }]);

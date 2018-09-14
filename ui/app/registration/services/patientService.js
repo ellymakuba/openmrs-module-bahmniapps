@@ -67,9 +67,11 @@ angular.module('bahmni.registration')
         };
 
         var billRegistrationFee = function (patient) {
-          return $http.post('http://localhost:8080/bahmni-service/registrationfee.form',patient,{withCredentials: false});
+          return $http.post('http://159.203.68.204:8854/middlewareapi/customer/',patient,{withCredentials: false});
         };
-
+        var loginERP=function(credentials){
+          return $http.post('http://159.203.68.204:8854/middlewareapi/login/',credentials,{withCredentials: false});
+        }
         return {
             search: search,
             searchByIdentifier: searchByIdentifier,
@@ -77,6 +79,7 @@ angular.module('bahmni.registration')
             update: update,
             get: get,
             updateImage: updateImage,
-            billRegistrationFee:billRegistrationFee
+            billRegistrationFee:billRegistrationFee,
+            loginERP:loginERP
         };
     }]);
